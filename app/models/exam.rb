@@ -12,4 +12,6 @@ class Exam < ApplicationRecord
   def reserveable_time?
     self.start_at.ago(VALID_DAYS).future?
   end
+
+  validates :name, presence: true
 end

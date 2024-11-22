@@ -21,8 +21,8 @@ class AdminResources::ExamSchedulesController < AdminResources::BaseController
     ActiveRecord::Base.transaction do
       exam_schedule = ExamSchedule.approved.find(params[:id]).lock
       exam = exam_schedule.exam.lock
+      exam.decrement!(:booked_count) if exam_schedule.approved?
       exam_schedule.destroy!
-      exam.decrement!(:booked_count)
     end
 
     head :ok
