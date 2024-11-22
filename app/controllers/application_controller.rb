@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   def render_validation_error(e)
-    render json: { custom_errors: e.errors }, status: :unprocessable_entity
+    render json: { errors: e.errors }, status: :unprocessable_entity
   end
 
   def render_not_found
