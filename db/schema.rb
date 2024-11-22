@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_120510) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_exam_schedules_on_exam_id"
+    t.index ["user_id"], name: "index_exam_schedules_on_user_id"
   end
 
   create_table "exams", force: :cascade do |t|
@@ -31,9 +33,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_120510) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "name"
     t.integer "role", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 end

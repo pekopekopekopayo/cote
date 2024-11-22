@@ -6,5 +6,8 @@ class CreateExamSchedules < ActiveRecord::Migration[7.2]
       t.integer :status, default: 0, null: false
       t.timestamps
     end
+
+    add_index :exam_schedules, :exam_id
+    add_index :exam_schedules, :user_id
   end
 end
