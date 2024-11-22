@@ -5,8 +5,8 @@ class AdminResources::ExamSchedulesController < AdminResources::BaseController
 
   def approve
     ActiveRecord::Base.transaction do
-      exam_schedule = ExamSchedule.reserved.find(params[:id]).lock
-      exam = exam_schedule.exam.lock
+      exam_schedule = ExamSchedule.reserved.find(params[:id]).lock!
+      exam = exam_schedule.exam.lock!
 
       raise ValidationError, [ { type: :fully_booked } ] if exam.fully_booked?
 
@@ -19,8 +19,8 @@ class AdminResources::ExamSchedulesController < AdminResources::BaseController
 
   def reject
     ActiveRecord::Base.transaction do
-      exam_schedule = ExamSchedule.approved.find(params[:id]).lock
-      exam = exam_schedule.exam.lock
+      exam_schedule = ExamSchedule.approved.find(params[:id]).lock!
+      exam = exam_schedule.exam.lock!
       exam.decrement!(:booked_count) if exam_schedule.approved?
       exam_schedule.destroy!
     end
