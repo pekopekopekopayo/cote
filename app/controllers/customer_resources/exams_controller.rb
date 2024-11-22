@@ -1,7 +1,5 @@
 class CustomerResources::ExamsController < CustomerResources::BaseController
   def index
-    exams = Exam.all.page(params[:page])
-
-    render  json: exams
+    render json: Exam.all.page(params[:page])
   end
 end
