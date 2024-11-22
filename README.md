@@ -37,19 +37,20 @@
 
 
 ## 작성된 코드를 로컬 환경에서 실행해보기 위한 환경 설정 및 실행 방법
-1. docker compose up -d 또는 docker compose up
-2. localhost 3000 번으로 접근
+1. Docker이 필요합니다.
+2. docker compose up -d 또는 docker compose up
+3. localhost 3000 번으로 접근
 
 ## API DOC
 
 1. GET users
-  desc '유저 생성'
-  param name, desc '이름'
-  returns :200
+  - desc '유저 생성'
+  - param name, desc '이름'
+  - returns :200
 
 2. GET customer/:current_user_id/exams
-  desc '모든 시험을 조회'
-  returns :200
+  - desc '모든 시험을 조회'
+  - returns :200
   ```
   [
     {
@@ -64,9 +65,9 @@
   ```
 
 3. GET customer/:current_user_id/exam_schedules
-  desc '자신의 모든 스케줄 보기'
-  param :page, :number
-  returns :200
+  - desc '자신의 모든 스케줄 보기'
+  - param :page, :number
+  - returns :200
   ```
   [
     {
@@ -80,17 +81,17 @@
   ]
   ```
 4. POST customer/:current_user_id/exam_schedules
-  desc '예약'
-  param exam_id, :number
-  returns :200
+  - desc '예약'
+  - param exam_id, :number
+  - returns :200
 
 5. DELETE customer/:current_user_id/exam_schedules
-  desc '예약취소'
-  returns :200
+  - desc '예약취소'
+  - returns :200
 
 6. GET admin/:current_user_id/exams
-  desc '어드민 모든시험보기(중복)'
-  returns :200
+  - desc '어드민 모든시험보기(중복)'
+  - returns :200
   ```
   [
     {
@@ -104,15 +105,15 @@
   ]
   ```
 7. POST admin/:current_user_id/exams
-  desc '어드민 시험만들기'
-  param :start_at(과거시간에 관하여 딱히 막지않음)
-  param :name
-  returns :200
+  - desc '어드민 시험만들기'
+  - param :start_at(과거시간에 관하여 딱히 막지않음)
+  - param :name
+  - returns :200
 
 8. GET admin/:current_user_id/exam_schedules
-  desc '모든 사용자 일정보기'
-  param :page :number
-  returns :200
+  - desc '모든 사용자 일정보기'
+  - param :page :number
+  - returns :200
   ```
   [
     {
@@ -125,9 +126,9 @@
   ]
   ```
 9. POST admin/:current_user_id/exam_schedules/:id/approve
-  desc '예약 확정'
-  returns :200
+  - desc '예약 확정'
+  - returns :200
 
 10. POST admin/:current_user_id/exam_schedules/:id/reject
-  desc '예약 취소'
-  returns :200
+  - desc '예약 취소'
+  - returns :200
