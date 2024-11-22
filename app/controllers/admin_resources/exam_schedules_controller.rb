@@ -10,7 +10,7 @@ class AdminResources::ExamSchedulesController < AdminResources::BaseController
 
       raise ValidationError, [ { type: :fully_booked } ] if exam.fully_booked?
 
-      exam_schedule.approve!
+      exam_schedule.approved!
       exam.increment!(:booked_count)
     end
 
