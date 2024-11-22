@@ -1,6 +1,6 @@
 class CustomerResources::ExamSchedulesController < CustomerResources::BaseController
   def index
-    @exams = current_user.exams.page(params[:page])
+    render json: current_user.exams.page(params[:page])
   end
 
   def create
